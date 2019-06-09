@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -15,33 +16,34 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
-	int currentState = END_STATE;
+	int currentState = MENU_STATE;
 	Font Fount = new Font("Iowan Old Style", Font.BOLD, 48);
-	
+	Font FountS = new Font("Tamil MN", Font.BOLD, 24);
+	objManager chara = new objManager();
+
 	Panel() {
 		// WEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGI
 		t = new Timer(1 / 604789650, this);
-		
-		
+
 	}
-	
+
 	void startGame() {
 		t.start();
 
 	}
-	
+
 	void updateMenuState() {
 
 	}
 
 	void updateGameState() {
-		
+
 	}
 
 	void updateEndState() {
 
 	}
-	
+
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
@@ -49,14 +51,23 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(Fount);
 		g.drawString("PacMan", 670, 200);
 		g.setFont(Fount);
-		g.drawString("Press to start", 620, 400);
+		g.drawString("Press any key to start", 600, 400);
 		g.setFont(Fount);
 		g.drawString("Press SPACE for instructions", 470, 600);
+		g.drawString("Press ENTER to go to the end", 470, 800);       
+		chara.score=0;
 	}
+
 	void drawGameState(Graphics g) {
-		
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, mainClass.width, mainClass.height);
+		g.setColor(Color.white);
+		g.setFont(Fount);
+		g.drawString("score =  " + chara.scoreGetter(), 20, 50);
+		chara.scoreAdd(1);
+		chara.draw(g);
 	}
-	
+
 	void drawEndState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
@@ -64,11 +75,11 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(Fount);
 		g.drawString("PacMan", 670, 200);
 		g.setFont(Fount);
-		g.drawString("Press to start", 620, 400);
+		g.drawString("Press any key to menu", 600, 400);
 		g.setFont(Fount);
-		g.drawString("wip", 700, 600);
+		g.drawString("score : " + chara.scoreGetter(), 700, 600);
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		g.fillRect(10, 10, 100, 100);
 
@@ -80,6 +91,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 			drawEndState(g);
 		}
 	}
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -89,7 +101,30 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println(e.getKeyCode());
+		System.out.println(e.getKeyChar());
+		System.out.println(e.getKeyLocation());
+		System.out.println(e.getModifiers());
 
+		if (e.getKeyCode() == 32) {
+			if (currentState == MENU_STATE) {
+				JOptionPane.showMessageDialog(null, "To further explain the rules let's break it down as follows:\n"
+						+ "Pacman, our hero, munches his way around the room, eating all of the Pac-dots.\n"
+						+ "In each corner of the room there is a \"Power Pellet\", which when Pacman eats one, the Ghosts turn blue or yellow. Pacman can get extra points by eating the Ghosts. The first one is worth 200 points and each additional Ghost eaten is worth double the number of points.\n"
+						+ "When the player reaches 10,000 points, he gets an additional life - but that only happens once during the game. \n "
+						+ "http://www.pacxon.net/pacman-rules.php");
+			}
+		} else if (currentState == MENU_STATE) {
+			currentState = GAME_STATE;
+		}
+		if (currentState == END_STATE) {
+			currentState = MENU_STATE;
+		}
+		if (e.getKeyCode() == 10) {
+			if (currentState == GAME_STATE) {
+				currentState = END_STATE;
+			}
+		}
 	}
 
 	@Override
@@ -110,7 +145,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		} else if (currentState == END_STATE) {
 			updateEndState();
 		}
-	
+
 	}
 
 }
