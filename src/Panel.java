@@ -18,7 +18,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
 	Font Fount = new Font("Iowan Old Style", Font.BOLD, 48);
-	Font FountS = new Font("Tamil MN", Font.BOLD, 24);
+	Font FountS = new Font("Tamil MN", Font.BOLD, 9);
 	objManager chara = new objManager();
 
 	Panel() {
@@ -62,9 +62,9 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
 		g.setColor(Color.white);
-		g.setFont(Fount);
-		g.drawString("score =  " + chara.scoreGetter(), 20, 50);
-		chara.scoreAdd(1);
+		g.setFont(FountS);
+		g.drawString("score =  " + chara.scoreGetter(), 2, 10);
+		//chara.scoreAdd(1);
 		chara.draw(g);
 	}
 
