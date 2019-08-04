@@ -64,7 +64,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.white);
 		g.setFont(FountS);
 		g.drawString("score =  " + chara.scoreGetter(), 2, 10);
-		//chara.scoreAdd(1);
+		chara.scoreAdd(1);
 		chara.draw(g);
 	}
 
