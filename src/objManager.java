@@ -1,10 +1,14 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class objManager {
 	
 	ArrayList<Wall> wallE = new ArrayList<Wall>();
-	Ghost ghost=new Ghost(740, 730, 50, 50);
+	Ghost ghost1=new Ghost(730, 450, 30, 30, Color.red);
+	Ghost ghost2=new Ghost(765, 450, 30, 30, Color.pink);
+	Ghost ghost3=new Ghost(800, 450, 30, 30, Color.cyan);
+	Ghost ghost4=new Ghost(835, 450, 30, 30, Color.orange);
 	
 	objManager () {
 		wallE.add(new Wall(40,40,770,30));
@@ -38,16 +42,30 @@ public class objManager {
 				wallE.add(new Wall(720,490,120,40));		
 				
 	}
+	void update () {
+		ghost1.update();
+		ghost2.update();
+		ghost3.update();
+		ghost4.update();
+		for (int i = 0; i < wallE.size(); i++) {
+			Wall s = wallE.get(i);
+			s.update();
+		}
+	}
 	public void draw(Graphics g) {
 		
 		for (int i = 0; i < wallE.size(); i++) {
 			Wall s = wallE.get(i);
 			s.draw(g);
 		}
-		ghost.draw(g);
+		ghost1.draw(g);
+		ghost2.draw(g);
+		ghost3.draw(g);
+		ghost4.draw(g);
+		
 
 		
-		}
+	}
 	
 
 	int score = 0;
@@ -60,5 +78,14 @@ public class objManager {
 	int scoreGetter() {
 		
 		return score;
+	}
+	
+	void checkCollision() {
+		for (Wall a : wallE) {
+			if (ghost1.collisionBox.intersects(a.collisionBox)) {
+				ghost1.NoTouchedWaLL=false;
+			}
+		}
+		
 	}
 }

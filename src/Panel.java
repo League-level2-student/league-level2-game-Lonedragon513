@@ -20,6 +20,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	Font Fount = new Font("Iowan Old Style", Font.BOLD, 48);
 	Font FountS = new Font("Tamil MN", Font.BOLD, 9);
 	objManager chara = new objManager();
+	Pacman pac = new Pacman(770, 550, 40, 40);
 
 	Panel() {
 		// WEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGI
@@ -37,7 +38,9 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-
+		chara.update();
+		chara.checkCollision();
+		
 	}
 
 	void updateEndState() {
@@ -125,12 +128,44 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 				currentState = END_STATE;
 			}
 		}
-	}
+		if (e.getKeyCode() == 37) {
+			pac.left = true;
+			System.out.println("left+");
+		}
+		if (e.getKeyCode() == 38) {
+			pac.up = true;
+			System.out.println("up+");
+		}
+		if (e.getKeyCode() == 39) {
+			pac.right = true;
+			System.out.println("right+");
+		}
+		if (e.getKeyCode() == 40) {
+			pac.down = true;
+			System.out.println("down+");
+		}
+		
+		}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+if (e.getKeyCode() == 37) {
+			pac.left = false;
+			System.out.println("left-");
+		}
+		if (e.getKeyCode() == 38) {
+			pac.up = false;
+			System.out.println("up-");
+		}
+		if (e.getKeyCode() == 39) {
+			pac.right = false;
+			System.out.println("right-");
+		}
+		if (e.getKeyCode() == 40) {
+			pac.down = false;
+			System.out.println("down-");
+		}
 	}
 
 	@Override
@@ -148,4 +183,5 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 
 	}
 
-}
+	}
+	

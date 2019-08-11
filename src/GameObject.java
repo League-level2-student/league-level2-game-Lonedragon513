@@ -7,6 +7,7 @@ public class GameObject {
     int width;
     int height;
     boolean isAlive = true;
+    boolean NoTouchedWaLL = true;
     Rectangle collisionBox;
     
     GameObject(int x, int y, int width, int height){
