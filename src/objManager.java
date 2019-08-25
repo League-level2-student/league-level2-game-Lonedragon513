@@ -5,29 +5,29 @@ import java.util.ArrayList;
 public class objManager {
 
 	static ArrayList<Wall> wallE = new ArrayList<Wall>();
-	Ghost ghost1 = new Ghost(730, 450, 30, 30, Color.red);
-	Ghost ghost2 = new Ghost(765, 450, 30, 30, Color.pink);
-	Ghost ghost3 = new Ghost(800, 450, 30, 30, Color.cyan);
-	Ghost ghost4 = new Ghost(835, 450, 30, 30, Color.orange);
+	Ghost ghost1 = new Ghost(730, 450, 1, 1, Color.red);
+	Ghost ghost2 = new Ghost(765, 450, 1, 1, Color.pink);
+	Ghost ghost3 = new Ghost(800, 450, 1, 1, Color.cyan);
+	Ghost ghost4 = new Ghost(835, 450, 1, 1, Color.orange);
 	static ArrayList<InterSec> iSec = new ArrayList<InterSec>();
 
 	objManager() {
 		wallE.add(new Wall(40, 40, 770, 30));
 		wallE.add(new Wall(40, 40, 30, 390));
-		wallE.add(new Wall(40, 390, 240, 40));
-		wallE.add(new Wall(120, 120, 70, 100));
-		wallE.add(new Wall(120, 190, 260, 30));
-		wallE.add(new Wall(240, 120, 460, 30));
-		wallE.add(new Wall(450, 120, 250, 90));
-		wallE.add(new Wall(340, 190, 40, 140));
+		wallE.add(new Wall(40, 390, 230, 40));
+		wallE.add(new Wall(120, 120, 60, 90));
+		wallE.add(new Wall(120, 190, 270, 20));
+		wallE.add(new Wall(240, 120, 470, 20));
+		wallE.add(new Wall(440, 120, 270, 80));
+		wallE.add(new Wall(320, 190, 70, 140));
 		wallE.add(new Wall(120, 260, 140, 80));
-		wallE.add(new Wall(330, 390, 100, 70));
-		wallE.add(new Wall(340, 260, 270, 70));
-		wallE.add(new Wall(490, 260, 210, 50));
-		wallE.add(new Wall(490, 260, 120, 150));
-		wallE.add(new Wall(670, 370, 100, 40));
-		wallE.add(new Wall(670, 370, 50, 80));
-		wallE.add(new Wall(760, 40, 50, 270));
+		wallE.add(new Wall(330, 390, 110, 70));
+		wallE.add(new Wall(320, 260, 300, 70));
+		wallE.add(new Wall(490, 260, 220, 60));
+		wallE.add(new Wall(490, 260, 130, 160));
+		//wallE.add(new Wall(670, 370, 100, 40));
+		//wallE.add(new Wall(670, 370, 50, 80));
+		wallE.add(new Wall(760, 40, 50, 280));
 
 		int legs = wallE.size();
 		for (int iii = 0; iii < legs; iii++) {
@@ -39,14 +39,25 @@ public class objManager {
 			Wall wall = wallE.get(iii);
 			wallE.add(new Wall(wall.x, mainClass.height - wall.y - wall.height, wall.width, wall.height));
 		}
-		wallE.add(new Wall(720, 490, 120, 40));
+	//	wallE.add(new Wall(720, 490, 120, 40));
 
 		iSec.add(new InterSec(670, 370, 260, 160));
 
-		iSec.add(new InterSec(640, 340, 10, 10));
-		iSec.add(new InterSec(730, 330, 10, 10));
-		iSec.add(new InterSec(730, 230, 10, 10));
-		iSec.add(new InterSec(730, 90, 10, 10));
+		iSec.add(new InterSec(645, 345, 1, 1));
+		iSec.add(new InterSec(735, 345, 1, 1));
+		iSec.add(new InterSec(645, 455, 1, 1));
+		
+		int ICanSee = iSec.size();
+		int AAJUSTFORTHISIG;
+		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+			InterSec InterSec = iSec.get(AAJUSTFORTHISIG);
+			iSec.add(new InterSec(mainClass.width - InterSec.x - InterSec.width, InterSec.y, InterSec.width, InterSec.height));
+		}
+		ICanSee = wallE.size();
+		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+			InterSec InterSec = iSec.get(AAJUSTFORTHISIG);
+			iSec.add(new InterSec(InterSec.x, mainClass.height - InterSec.y - InterSec.height, InterSec.width, InterSec.height));
+		}
 	}
 
 	void update() {

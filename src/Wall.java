@@ -13,7 +13,8 @@ public class Wall extends GameObject {
 	}
 	public void draw(Graphics g){
 		g.setColor(Color.blue);
-		 g.fillRect(x, y, width, height);
+		g.drawRect(x, y, width, height);
+		 //g.fillRect(x, y, width, height);
 	}
 
 }
