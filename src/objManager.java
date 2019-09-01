@@ -3,12 +3,22 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class objManager {
-
+	static Pacman pac = new Pacman (735, 575, 10, 10);
 	static ArrayList<Wall> wallE = new ArrayList<Wall>();
-	Ghost ghost1 = new Ghost(730, 450, 1, 1, Color.red);
-	Ghost ghost2 = new Ghost(765, 450, 1, 1, Color.pink);
-	Ghost ghost3 = new Ghost(800, 450, 1, 1, Color.cyan);
-	Ghost ghost4 = new Ghost(835, 450, 1, 1, Color.orange);
+	Ghost ghost1 = new Ghost(645, 345, 1, 1, Color.red);
+	Ghost ghost2 = new Ghost(735, 345, 1, 1, Color.pink);
+	Ghost ghost3 = new Ghost(645, 575, 1, 1, Color.cyan);
+	Ghost ghost4 = new Ghost(735, 575, 1, 1, Color.orange);
+	
+//	Ghost ghost1 = new Ghost(645, 345, 10, 10, Color.red);
+//	Ghost ghost2 = new Ghost(735, 345, 10, 10, Color.pink);
+//	Ghost ghost3 = new Ghost(645, 575, 10, 10, Color.cyan);
+//	Ghost ghost4 = new Ghost(735, 575, 10, 10, Color.orange);
+	
+//	Ghost ghost1 = new Ghost(740, 325, 23, 23, Color.red);
+//	Ghost ghost2 = new Ghost(815, 325, 23, 23, Color.pink);
+//	Ghost ghost3 = new Ghost(745, 545, 23, 23, Color.cyan);
+//	Ghost ghost4 = new Ghost(815, 545, 23, 23, Color.orange);
 	static ArrayList<InterSec> iSec = new ArrayList<InterSec>();
 
 	objManager() {
@@ -25,9 +35,10 @@ public class objManager {
 		wallE.add(new Wall(320, 260, 300, 70));
 		wallE.add(new Wall(490, 260, 220, 60));
 		wallE.add(new Wall(490, 260, 130, 160));
-		//wallE.add(new Wall(670, 370, 100, 40));
-		//wallE.add(new Wall(670, 370, 50, 80));
+		wallE.add(new Wall(670, 370, 100, 40));
+		wallE.add(new Wall(670, 370, 50, 80));
 		wallE.add(new Wall(760, 40, 50, 280));
+wallE.add(new Wall(720, 490, 120, 40));
 
 		int legs = wallE.size();
 		for (int iii = 0; iii < legs; iii++) {
@@ -39,13 +50,21 @@ public class objManager {
 			Wall wall = wallE.get(iii);
 			wallE.add(new Wall(wall.x, mainClass.height - wall.y - wall.height, wall.width, wall.height));
 		}
-	//	wallE.add(new Wall(720, 490, 120, 40));
+		
+		
 
-		iSec.add(new InterSec(670, 370, 260, 160));
+		//iSec.add(new InterSec(670, 370, 260, 160));
 
 		iSec.add(new InterSec(645, 345, 1, 1));
 		iSec.add(new InterSec(735, 345, 1, 1));
 		iSec.add(new InterSec(645, 455, 1, 1));
+		iSec.add(new InterSec(735, 225, 1, 1));
+		iSec.add(new InterSec(415, 225, 1, 1));
+		iSec.add(new InterSec(415, 165, 1, 1));
+		iSec.add(new InterSec(205, 165, 1, 1));
+		iSec.add(new InterSec(205, 95, 1, 1));
+		iSec.add(new InterSec(95, 95, 1, 1));
+		
 		
 		int ICanSee = iSec.size();
 		int AAJUSTFORTHISIG;
@@ -69,6 +88,7 @@ public class objManager {
 			Wall s = wallE.get(i);
 			s.update();
 		}
+		pac.update();
 	}
 
 	public void draw(Graphics g) {
@@ -85,6 +105,7 @@ public class objManager {
 			InterSec s = iSec.get(i);
 			s.draw(g);
 		}
+		pac.draw(g);
 
 	}
 
@@ -108,16 +129,32 @@ public class objManager {
 		}
 		return false;
 
+	
 	}
-
-	public static boolean checkI(Ghost gw) {
-		for (InterSec i : iSec) {
-			if (gw.collisionBox.intersects(i.collisionBox)) {
+	
+	public static boolean checkCollision(Pacman gw) {
+		for (Wall a : wallE) {
+			if (gw.collisionBox.intersects(a.collisionBox)) {
 				return true;
 			}
 
 		}
 		return false;
+
+	
+	}
+
+	
+	
+	
+	public static InterSec checkI(Ghost gw) {
+		for (InterSec i : iSec) {
+			if (gw.collisionBox.intersects(i.collisionBox)) {
+				return i;
+			}
+
+		}
+		return null;
 
 	}
 }

@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Random;
 
 public class Pacman extends GameObject {
@@ -7,6 +8,7 @@ public class Pacman extends GameObject {
 	boolean left;
 	boolean down;
 	boolean  up;
+	
 	Pacman(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
@@ -30,6 +32,15 @@ public class Pacman extends GameObject {
      	if (down) {
     		y++;
     	}
-    }
-	}
+    
+	
+	
+	if (objManager.checkCollision(this)) {
+		
+		}
+		
+			}
+		}
+	
 
+//

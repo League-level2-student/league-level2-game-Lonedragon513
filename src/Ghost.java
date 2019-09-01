@@ -55,7 +55,9 @@ void check () {
 		}
 		
 	}
-	if (objManager.checkI(this))
+	InterSec HiT = objManager.checkI(this);
+	if (HiT!= null )
+		setPos (HiT.x, HiT.y);
 		move= ran.nextInt(4);
 	
 }
@@ -63,5 +65,12 @@ void check () {
 		g.setColor(col);
 		g.fillRect(x, y, width, height);
 
+	}
+	
+	
+	void setPos (int x, int y) {
+		this.x=x;
+		this.y=y;
+		
 	}
 }

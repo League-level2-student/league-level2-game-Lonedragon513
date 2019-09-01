@@ -9,6 +9,8 @@ public class GameObject {
     boolean isAlive = true;
     boolean NoTouchedWaLL = true;
     Rectangle collisionBox;
+   static Rectangle PacBox;
+    
     
     GameObject(int x, int y, int width, int height){
     	this.x=x;
@@ -16,11 +18,13 @@ public class GameObject {
     	this.width=width;
     	this.height=height;
     	collisionBox = new Rectangle (x,y,width,height);
+    	PacBox = new Rectangle (x,y,width,height);
+
     }
     
     void update() {
     	collisionBox.setBounds(x, y, width, height);
-
+    	PacBox.setBounds(x, y, width, height);
     }
     
     public void draw(Graphics g){

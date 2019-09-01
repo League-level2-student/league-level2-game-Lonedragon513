@@ -20,7 +20,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	Font Fount = new Font("Iowan Old Style", Font.BOLD, 48);
 	Font FountS = new Font("Tamil MN", Font.BOLD, 9);
 	objManager chara = new objManager();
-	Pacman pac = new Pacman(770, 550, 40, 40);
+	
 	public static int cF =0;
 
 	Panel() {
@@ -129,19 +129,19 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 			}
 		}
 		if (e.getKeyCode() == 37) {
-			pac.left = true;
+			chara.pac.left = true;
 			System.out.println("left+");
 		}
 		if (e.getKeyCode() == 38) {
-			pac.up = true;
+			chara.pac.up = true;
 			System.out.println("up+");
 		}
 		if (e.getKeyCode() == 39) {
-			pac.right = true;
+			chara.pac.right = true;
 			System.out.println("right+");
 		}
 		if (e.getKeyCode() == 40) {
-			pac.down = true;
+			chara.pac.down = true;
 			System.out.println("down+");
 		}
 		
@@ -151,19 +151,19 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 if (e.getKeyCode() == 37) {
-			pac.left = false;
+	chara.	pac.left = false;
 			System.out.println("left-");
 		}
 		if (e.getKeyCode() == 38) {
-			pac.up = false;
+			chara.		pac.up = false;
 			System.out.println("up-");
 		}
 		if (e.getKeyCode() == 39) {
-			pac.right = false;
+			chara.		pac.right = false;
 			System.out.println("right-");
 		}
 		if (e.getKeyCode() == 40) {
-			pac.down = false;
+			chara.		pac.down = false;
 			System.out.println("down-");
 		}
 	}
