@@ -20,6 +20,28 @@ public class Pacman extends GameObject {
 
 	void update () {
 		super.update();
+		
+	if (objManager.checkCollision(this)) {
+		if (right) {
+			x-=5;
+			right=false;
+    	}
+     	if (left) {
+     		x+=5;
+			left=false;
+    	}
+     	if (up) {
+    		y+=5;
+    		up=false;
+    	}
+     	if (down) {
+    		y-= 5;
+    		down=false;
+    	}
+		}
+	
+	
+		
 		if (right) {
     		x++;
     	}
@@ -34,10 +56,7 @@ public class Pacman extends GameObject {
     	}
     
 	
-	
-	if (objManager.checkCollision(this)) {
-		
-		}
+
 		
 			}
 		}

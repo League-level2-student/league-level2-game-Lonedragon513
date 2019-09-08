@@ -130,18 +130,33 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		}
 		if (e.getKeyCode() == 37) {
 			chara.pac.left = true;
+			chara.		pac.up = false;
+			chara.		pac.right = false;
+			chara.		pac.down = false;
 			System.out.println("left+");
 		}
 		if (e.getKeyCode() == 38) {
 			chara.pac.up = true;
+			chara.		pac.right = false;
+			chara.	pac.left = false;
+			chara.		pac.down = false;
+
 			System.out.println("up+");
 		}
 		if (e.getKeyCode() == 39) {
 			chara.pac.right = true;
+			chara.	pac.left = false;
+			chara.		pac.up = false;
+			chara.		pac.down = false;
+
 			System.out.println("right+");
 		}
 		if (e.getKeyCode() == 40) {
 			chara.pac.down = true;
+			chara.	pac.left = false;
+			chara.		pac.up = false;
+			chara.		pac.right = false;
+
 			System.out.println("down+");
 		}
 		
@@ -150,22 +165,22 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-if (e.getKeyCode() == 37) {
-	chara.	pac.left = false;
-			System.out.println("left-");
-		}
-		if (e.getKeyCode() == 38) {
-			chara.		pac.up = false;
-			System.out.println("up-");
-		}
-		if (e.getKeyCode() == 39) {
-			chara.		pac.right = false;
-			System.out.println("right-");
-		}
-		if (e.getKeyCode() == 40) {
-			chara.		pac.down = false;
-			System.out.println("down-");
-		}
+//if (e.getKeyCode() == 37) {
+//	chara.	pac.left = false;
+//			System.out.println("left-");
+//		}
+//		if (e.getKeyCode() == 38) {
+//			chara.		pac.up = false;
+//			System.out.println("up-");
+//		}
+//		if (e.getKeyCode() == 39) {
+//			chara.		pac.right = false;
+//			System.out.println("right-");
+//		}
+//		if (e.getKeyCode() == 40) {
+//			chara.		pac.down = false;
+//			System.out.println("down-");
+//		}
 	}
 
 	@Override

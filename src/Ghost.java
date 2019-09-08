@@ -9,58 +9,104 @@ public class Ghost extends GameObject {
 		this.col = col;
 		// TODO Auto-generated constructor stub
 	}
-
+//	boolean right=false;
+//	boolean left=false;
+//	boolean down=false;
+//	boolean  up=false;
 	Color col;
 	Random ran = new Random();
 	int move = ran.nextInt(4);
 
 	void update() {
 		super.update();
-		if (move == 0) {
-			x++;
+		if (x<1570) {
+				x++;
 		}
-		if (move == 1) {
-			x--;
+		if (x>40) {
+			
 		}
+//		if (y<40) {
+//			
+//		}
+		
+	
+//		if(right) {
+//			x++;
+//		}
+//		if(left) {
+//			x--;
+//		}
+//		if(up) {
+//			y++;
+//		}
+//		if(down) {
+//			y--;
+//		}
+//		
+//		if (move == 0) {
+//			right=true;
+//		}
+//		if (move == 1) {
+//			left=true;
+//		}
+//
+//		if (move == 2) {
+//			up=true;
+//		}
+//		if (move == 3) {
+//			down=true;
+//		}
+//		
+//		if (x<40) {
+//			
+//		}
+//		check();		
 
-		if (move == 2) {
-			y++;
-		}
-		if (move == 3) {
-			y--;
-		}
-		check();
+//		if (move == 0) {
+//			x++;
+//		}
+//		if (move == 1) {
+//			x--;
+//		}
+//
+//		if (move == 2) {
+//			y++;
+//		}
+//		if (move == 3) {
+//			y--;
+//		}
+//		check();
 		
 		
 
 	}
 void check () {
-	if (objManager.checkCollision(this)) {
-		if (move == 0) {
-			move++;
-			x-=5;
-		}
-		else if (move == 1) {
-			move=0;
-			x+=5;
-		}
-
-		else if (move == 2) {
-			move++;
-			y-=5;
-		}
-		else if (move == 3) {
-			move=2;
-			y+=5;
-		}
+//	if (objManager.checkCollision(this)) {
+//		if (move == 0) {
+//			move++;
+//			x-=5;
+//		}
+//		else if (move == 1) {
+//			move=0;
+//			x+=5;
+//		}
+//
+//		else if (move == 2) {
+//			move++;
+//			y-=5;
+//		}
+//		else if (move == 3) {
+//			move=2;
+//			y+=5;
+//		}
 		
 	}
 	InterSec HiT = objManager.checkI(this);
-	if (HiT!= null )
-		setPos (HiT.x, HiT.y);
-		move= ran.nextInt(4);
-	
-}
+//	if (HiT!= null )
+//		setPos (HiT.x, HiT.y);
+//		move= ran.nextInt(4);
+//	
+//}
 	public void draw(Graphics g) {
 		g.setColor(col);
 		g.fillRect(x, y, width, height);
