@@ -13,18 +13,38 @@ public class Ghost extends GameObject {
 //	boolean left=false;
 //	boolean down=false;
 //	boolean  up=false;
+	
 	Color col;
 	Random ran = new Random();
-	int move = ran.nextInt(4);
+	int moveX = ran.nextInt(7)-3;
+	int moveY = ran.nextInt(7)-3;
 
 	void update() {
 		super.update();
+		x+=moveX;
+		y+=moveY;
+		
+		if (moveX==0) {
+			moveX = ran.nextInt(7)-3;
+		}
+		if (moveY==0) {
+			 moveY = ran.nextInt(7)-3;
+		}
+		if (x>1570||x<40||y<40|| y>870) {
+			y = y-moveY;
+			x=x-moveX;
+			moveX = ran.nextInt(7)-3;
+			 moveY = ran.nextInt(7)-3;
+		}
+		/**
 		if (x<1570) {
 				x++;
 		}
 		if (x>40) {
 			
 		}
+		*/
+		
 //		if (y<40) {
 //			
 //		}

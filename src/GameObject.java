@@ -8,7 +8,7 @@ public class GameObject {
     int height;
     boolean isAlive = true;
     boolean NoTouchedWaLL = true;
-    Rectangle collisionBox;
+    static Rectangle collisionBox;
    static Rectangle PacBox;
     
     

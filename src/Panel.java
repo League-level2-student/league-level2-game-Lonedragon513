@@ -41,6 +41,9 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	void updateGameState() {
 		chara.update();
 		cF++;
+		if(chara.pac.isAlive==false ) {
+			currentState = END_STATE;
+		}
 	}
 
 	void updateEndState() {

@@ -5,21 +5,24 @@ import java.util.ArrayList;
 public class objManager {
 	static Pacman pac = new Pacman (735, 575, 10, 10);
 	static ArrayList<Wall> wallE = new ArrayList<Wall>();
-	Ghost ghost1 = new Ghost(645, 345, 1, 1, Color.red);
-	Ghost ghost2 = new Ghost(735, 345, 1, 1, Color.pink);
-	Ghost ghost3 = new Ghost(645, 575, 1, 1, Color.cyan);
-	Ghost ghost4 = new Ghost(735, 575, 1, 1, Color.orange);
+	static ArrayList<InterSec> iSec = new ArrayList<InterSec>();
+	int score = 0;
 	
+//	Ghost ghost1 = new Ghost(645, 345, 1, 1, Color.red);
+//	Ghost ghost2 = new Ghost(735, 345, 1, 1, Color.pink);
+//	Ghost ghost3 = new Ghost(645, 575, 1, 1, Color.cyan);
+//	Ghost ghost4 = new Ghost(735, 575, 1, 1, Color.orange);
+//	
 //	Ghost ghost1 = new Ghost(645, 345, 10, 10, Color.red);
 //	Ghost ghost2 = new Ghost(735, 345, 10, 10, Color.pink);
 //	Ghost ghost3 = new Ghost(645, 575, 10, 10, Color.cyan);
 //	Ghost ghost4 = new Ghost(735, 575, 10, 10, Color.orange);
+//	
+	Ghost ghost1 = new Ghost(740, 325, 23, 23, Color.red);
+	Ghost ghost2 = new Ghost(815, 325, 23, 23, Color.pink);
+	Ghost ghost3 = new Ghost(745, 545, 23, 23, Color.cyan);
+	Ghost ghost4 = new Ghost(815, 545, 23, 23, Color.orange);
 	
-//	Ghost ghost1 = new Ghost(740, 325, 23, 23, Color.red);
-//	Ghost ghost2 = new Ghost(815, 325, 23, 23, Color.pink);
-//	Ghost ghost3 = new Ghost(745, 545, 23, 23, Color.cyan);
-//	Ghost ghost4 = new Ghost(815, 545, 23, 23, Color.orange);
-	static ArrayList<InterSec> iSec = new ArrayList<InterSec>();
 
 	objManager() {
 		wallE.add(new Wall(40, 40, 770, 30));
@@ -109,7 +112,7 @@ wallE.add(new Wall(720, 490, 120, 40));
 
 	}
 
-	int score = 0;
+	
 
 	void scoreAdd(int score) {
 		this.score += score;
@@ -119,7 +122,7 @@ wallE.add(new Wall(720, 490, 120, 40));
 
 		return score;
 	}
-
+/**
 	public static boolean checkCollision(Ghost gw) {
 		for (Wall a : wallE) {
 			if (gw.collisionBox.intersects(a.collisionBox)) {
@@ -131,7 +134,11 @@ wallE.add(new Wall(720, 490, 120, 40));
 
 	
 	}
+	*/
 	
+	void hi() {
+		
+	}
 	public static boolean checkCollision(Pacman gw) {
 		for (Wall a : wallE) {
 			if (gw.collisionBox.intersects(a.collisionBox)) {
@@ -140,8 +147,6 @@ wallE.add(new Wall(720, 490, 120, 40));
 
 		}
 		return false;
-
-	
 	}
 
 	
@@ -155,6 +160,17 @@ wallE.add(new Wall(720, 490, 120, 40));
 
 		}
 		return null;
+
+	}
+	
+	 public static boolean checkDeath(Pacman gw) {
+		
+			if (gw.collisionBox.intersects(Ghost.collisionBox)) {
+				return true;
+			}
+
+		
+		return false;
 
 	}
 }
