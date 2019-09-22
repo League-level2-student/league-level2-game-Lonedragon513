@@ -22,6 +22,9 @@ public class Pacman extends GameObject {
 	void update() {
 		super.update();
 		move();
+		if(!objManager.checkDeath(this)) {
+			isAlive=false;
+		}
 	}
 
 	void move() {
@@ -46,6 +49,7 @@ public class Pacman extends GameObject {
 		
 		if (!objManager.checkCollision(new Pacman(newX,newY,width,height))) {
 			if (right) {
+				
 				x++;
 			}
 			if (left) {

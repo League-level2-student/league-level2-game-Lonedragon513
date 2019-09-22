@@ -30,7 +30,7 @@ public class Ghost extends GameObject {
 		if (moveY==0) {
 			 moveY = ran.nextInt(7)-3;
 		}
-		if (x>1570||x<40||y<40|| y>870) {
+		if (x>1560-width||x<40||y<40|| y>860-height) {
 			y = y-moveY;
 			x=x-moveX;
 			moveX = ran.nextInt(7)-3;

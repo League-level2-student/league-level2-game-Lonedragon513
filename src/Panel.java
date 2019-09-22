@@ -19,7 +19,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	int currentState = MENU_STATE;
 	Font Fount = new Font("Iowan Old Style", Font.BOLD, 48);
 	Font FountS = new Font("Tamil MN", Font.BOLD, 9);
-	objManager chara = new objManager();
+	objManager charaMan = new objManager();
 	
 	public static int cF =0;
 
@@ -39,15 +39,18 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-		chara.update();
+		charaMan.update();
 		cF++;
-		if(chara.pac.isAlive==false ) {
+		if(objManager.pac.isAlive==false ) {
 			currentState = END_STATE;
+			//
+			objManager.reset();
 		}
+		
 	}
 
 	void updateEndState() {
-
+		
 	}
 
 	void drawMenuState(Graphics g) {
@@ -61,7 +64,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(Fount);
 		g.drawString("Press SPACE for instructions", 470, 600);
 		g.drawString("Press ENTER to go to the end", 470, 800);       
-		chara.score=0;
+		charaMan.score=0;
 	}
 
 	void drawGameState(Graphics g) {
@@ -69,9 +72,9 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
 		g.setColor(Color.white);
 		g.setFont(FountS);
-		g.drawString("score =  " + chara.scoreGetter(), 2, 10);
-		chara.scoreAdd(1);
-		chara.draw(g);
+		g.drawString("score =  " + charaMan.scoreGetter(), 2, 10);
+		charaMan.scoreAdd(1);
+		charaMan.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -83,7 +86,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(Fount);
 		g.drawString("Press any key to menu", 600, 400);
 		g.setFont(Fount);
-		g.drawString("score : " + chara.scoreGetter(), 700, 600);
+		g.drawString("score : " + charaMan.scoreGetter(), 700, 600);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -132,33 +135,33 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 			}
 		}
 		if (e.getKeyCode() == 37) {
-			chara.pac.left = true;
-			chara.		pac.up = false;
-			chara.		pac.right = false;
-			chara.		pac.down = false;
+			objManager.pac.left = true;
+			objManager.		pac.up = false;
+			objManager.		pac.right = false;
+			objManager.		pac.down = false;
 			System.out.println("left+");
 		}
 		if (e.getKeyCode() == 38) {
-			chara.pac.up = true;
-			chara.		pac.right = false;
-			chara.	pac.left = false;
-			chara.		pac.down = false;
+			objManager.pac.up = true;
+			objManager.		pac.right = false;
+			objManager.	pac.left = false;
+			objManager.		pac.down = false;
 
 			System.out.println("up+");
 		}
 		if (e.getKeyCode() == 39) {
-			chara.pac.right = true;
-			chara.	pac.left = false;
-			chara.		pac.up = false;
-			chara.		pac.down = false;
+			objManager.pac.right = true;
+			objManager.	pac.left = false;
+			objManager.		pac.up = false;
+			objManager.		pac.down = false;
 
 			System.out.println("right+");
 		}
 		if (e.getKeyCode() == 40) {
-			chara.pac.down = true;
-			chara.	pac.left = false;
-			chara.		pac.up = false;
-			chara.		pac.right = false;
+			objManager.pac.down = true;
+			objManager.	pac.left = false;
+			objManager.		pac.up = false;
+			objManager.		pac.right = false;
 
 			System.out.println("down+");
 		}
@@ -168,22 +171,22 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-//if (e.getKeyCode() == 37) {
-//	chara.	pac.left = false;
-//			System.out.println("left-");
-//		}
-//		if (e.getKeyCode() == 38) {
-//			chara.		pac.up = false;
-//			System.out.println("up-");
-//		}
-//		if (e.getKeyCode() == 39) {
-//			chara.		pac.right = false;
-//			System.out.println("right-");
-//		}
-//		if (e.getKeyCode() == 40) {
-//			chara.		pac.down = false;
-//			System.out.println("down-");
-//		}
+if (e.getKeyCode() == 37) {
+	//chara.	pac.left = false;
+			System.out.println("left-");
+		}
+		if (e.getKeyCode() == 38) {
+	//		chara.		pac.up = false;
+			System.out.println("up-");
+		}
+		if (e.getKeyCode() == 39) {
+	//		chara.		pac.right = false;
+			System.out.println("right-");
+		}
+		if (e.getKeyCode() == 40) {
+	//		chara.		pac.down = false;
+			System.out.println("down-");
+		}
 	}
 
 	@Override

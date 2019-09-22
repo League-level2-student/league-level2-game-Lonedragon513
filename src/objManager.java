@@ -18,10 +18,10 @@ public class objManager {
 //	Ghost ghost3 = new Ghost(645, 575, 10, 10, Color.cyan);
 //	Ghost ghost4 = new Ghost(735, 575, 10, 10, Color.orange);
 //	
-	Ghost ghost1 = new Ghost(740, 325, 23, 23, Color.red);
-	Ghost ghost2 = new Ghost(815, 325, 23, 23, Color.pink);
-	Ghost ghost3 = new Ghost(745, 545, 23, 23, Color.cyan);
-	Ghost ghost4 = new Ghost(815, 545, 23, 23, Color.orange);
+	static Ghost ghost1 = new Ghost(44, 44, 23, 23, Color.red);
+	static	Ghost ghost2 = new Ghost(1560-23, 44, 23, 23, Color.pink);
+	static Ghost ghost3 = new Ghost(44, 860-23, 23, 23, Color.cyan);
+	static Ghost ghost4 = new Ghost(1560-23, 860-23, 23, 23, Color.orange);
 	
 
 	objManager() {
@@ -53,6 +53,10 @@ wallE.add(new Wall(720, 490, 120, 40));
 			Wall wall = wallE.get(iii);
 			wallE.add(new Wall(wall.x, mainClass.height - wall.y - wall.height, wall.width, wall.height));
 		}
+		wallE.add(new Wall(0,0,1600,1));
+		wallE.add(new Wall(0,0,1,900));
+		wallE.add(new Wall(0,899,1600,1));
+		wallE.add(new Wall(1599,0,1,900));
 		
 		
 
@@ -92,6 +96,7 @@ wallE.add(new Wall(720, 490, 120, 40));
 			s.update();
 		}
 		pac.update();
+		objManager.checkDeath(pac);
 	}
 
 	public void draw(Graphics g) {
@@ -165,12 +170,52 @@ wallE.add(new Wall(720, 490, 120, 40));
 	
 	 public static boolean checkDeath(Pacman gw) {
 		
-			if (gw.collisionBox.intersects(Ghost.collisionBox)) {
-				return true;
+			if (gw.collisionBox.intersects(ghost1.collisionBox)) {System.out.println("SAD");
+				
+				return false;
 			}
-
+			if (gw.collisionBox.intersects(ghost2.collisionBox)) {System.out.println("SAD");
+				return false;
+			}
+			if (gw.collisionBox.intersects(ghost3.collisionBox)) {System.out.println("SAD");
+				return false;
+			}
+			
+			if (gw.collisionBox.intersects(ghost4.collisionBox)) {System.out.println("SAD");
+				return false;
+			}
 		
-		return false;
+		return true;
 
 	}
+	 
+	static void  reset() {
+		 ghost1 = new Ghost(44, 44, 23, 23, Color.red);
+		 ghost2 = new Ghost(1560-23, 44, 23, 23, Color.pink);
+		 ghost3 = new Ghost(44, 860-23, 23, 23, Color.cyan);
+		 ghost4 = new Ghost(1560-23, 860-23, 23, 23, Color.orange);
+		 pac = new Pacman (735, 575, 10, 10);
+	 
+	
+	
+	
+	
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -8,8 +8,8 @@ public class GameObject {
     int height;
     boolean isAlive = true;
     boolean NoTouchedWaLL = true;
-    static Rectangle collisionBox;
-   static Rectangle PacBox;
+    Rectangle collisionBox;
+    Rectangle PacBox;
     
     
     GameObject(int x, int y, int width, int height){
@@ -19,7 +19,7 @@ public class GameObject {
     	this.height=height;
     	collisionBox = new Rectangle (x,y,width,height);
     	PacBox = new Rectangle (x,y,width,height);
-
+    	isAlive=true;
     }
     
     void update() {
