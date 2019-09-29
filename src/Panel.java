@@ -66,14 +66,13 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.drawString("Press ENTER to go to the end", 470, 800);       
 		charaMan.score=0;
 	}
-
+	
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
 		g.setColor(Color.white);
 		g.setFont(FountS);
 		g.drawString("score =  " + charaMan.scoreGetter(), 2, 10);
-		charaMan.scoreAdd(1);
 		charaMan.draw(g);
 	}
 

@@ -6,6 +6,7 @@ public class objManager {
 	static Pacman pac = new Pacman (735, 575, 10, 10);
 	static ArrayList<Wall> wallE = new ArrayList<Wall>();
 	static ArrayList<InterSec> iSec = new ArrayList<InterSec>();
+	static ArrayList<Point> point = new ArrayList<Point>();
 	int score = 0;
 	
 //	Ghost ghost1 = new Ghost(645, 345, 1, 1, Color.red);
@@ -62,19 +63,43 @@ wallE.add(new Wall(720, 490, 120, 40));
 
 		//iSec.add(new InterSec(670, 370, 260, 160));
 
-		iSec.add(new InterSec(645, 345, 1, 1));
-		iSec.add(new InterSec(735, 345, 1, 1));
-		iSec.add(new InterSec(645, 455, 1, 1));
-		iSec.add(new InterSec(735, 225, 1, 1));
-		iSec.add(new InterSec(415, 225, 1, 1));
-		iSec.add(new InterSec(415, 165, 1, 1));
-		iSec.add(new InterSec(205, 165, 1, 1));
-		iSec.add(new InterSec(205, 95, 1, 1));
-		iSec.add(new InterSec(95, 95, 1, 1));
+//		iSec.add(new InterSec(645, 345, 1, 1));
+//		iSec.add(new InterSec(735, 345, 1, 1));
+//		iSec.add(new InterSec(645, 455, 1, 1));
+//		iSec.add(new InterSec(735, 225, 1, 1));
+//		iSec.add(new InterSec(415, 225, 1, 1));
+//		iSec.add(new InterSec(415, 165, 1, 1));
+//		iSec.add(new InterSec(205, 165, 1, 1));
+//		iSec.add(new InterSec(205, 95, 1, 1));
+//		iSec.add(new InterSec(95, 95, 1, 1));
+		
+		point.add(new Point(645, 345, 1, 1));
+		point.add(new Point(735, 345, 1, 1));
+		point.add(new Point(645, 455, 1, 1));
+		point.add(new Point(735, 225, 1, 1));
+		point.add(new Point(415, 225, 1, 1));
+		point.add(new Point(415, 165, 1, 1));
+		point.add(new Point(205, 165, 1, 1));
+		point.add(new Point(205, 95, 1, 1));
+		point.add(new Point(95, 95, 1, 1));
+		point.add(new Point(725, 95, 1, 1));
+		point.add(new Point(305, 245, 1, 1));
+		point.add(new Point(95, 245, 1, 1));
+		point.add(new Point(95, 355, 1, 1));
+		point.add(new Point(305, 365, 1, 1));
+		point.add(new Point(465, 365, 1, 1));
+		point.add(new Point(485, 455, 1, 1));
+		point.add(new Point(305, 455, 1, 1));
+		point.add(new Point(475, 95, 1, 1));
 		
 		
 		int ICanSee = iSec.size();
 		int AAJUSTFORTHISIG;
+		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+			Point Point = point.get(AAJUSTFORTHISIG);
+			point.add(new Point(mainClass.width - Point.x - Point.width, Point.y, Point.width, Point.height));
+		}
+		ICanSee = point.size();
 		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
 			InterSec InterSec = iSec.get(AAJUSTFORTHISIG);
 			iSec.add(new InterSec(mainClass.width - InterSec.x - InterSec.width, InterSec.y, InterSec.width, InterSec.height));
@@ -119,8 +144,8 @@ wallE.add(new Wall(720, 490, 120, 40));
 
 	
 
-	void scoreAdd(int score) {
-		this.score += score;
+	static void scoreAdd(int score) {
+		score += score;
 	}
 
 	int scoreGetter() {
@@ -167,7 +192,16 @@ wallE.add(new Wall(720, 490, 120, 40));
 		return null;
 
 	}
-	
+//	public static boolean getP (Pacman gw) {
+//		for 
+///	}
+	public static boolean getPoint (Point p) {
+		if (p.collisionBox.intersects(pac.collisionBox)) {
+			return true;
+		}
+		return false;
+		
+	}
 	 public static boolean checkDeath(Pacman gw) {
 		
 			if (gw.collisionBox.intersects(ghost1.collisionBox)) {System.out.println("SAD");
