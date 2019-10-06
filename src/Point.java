@@ -6,7 +6,11 @@ public class Point extends GameObject {
 	Point(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
+		num=numThe2nd;
+		numThe2nd++;
 	}
+	public int num;
+	static int numThe2nd=0;
 	
 	public void draw(Graphics hi){
 		hi.setColor(Color.white);
@@ -15,13 +19,15 @@ public class Point extends GameObject {
 	boolean pointTDe;
 	void update() {
 		pointTDe=objManager.getPoint(this);
-		
+		      
 		if (pointTDe) {
-			objManager.scoreAdd(1);
+			pointTDe=false;
 			x=999999999;
 			y=999999999;
-			width=999999999;
-			height=999999999;
-		}
+			width=0;
+			height=0;
+			System.out.println("NUMBBBBb     "+num);
+		objManager.scoreAdd();}
+		super.update();
 	}
 }

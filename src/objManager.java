@@ -7,7 +7,7 @@ public class objManager {
 	static ArrayList<Wall> wallE = new ArrayList<Wall>();
 	static ArrayList<InterSec> iSec = new ArrayList<InterSec>();
 	static ArrayList<Point> point = new ArrayList<Point>();
-	int score = 0;
+	static int score = 0;
 	
 //	Ghost ghost1 = new Ghost(645, 345, 1, 1, Color.red);
 //	Ghost ghost2 = new Ghost(735, 345, 1, 1, Color.pink);
@@ -23,6 +23,10 @@ public class objManager {
 	static	Ghost ghost2 = new Ghost(1560-23, 44, 23, 23, Color.pink);
 	static Ghost ghost3 = new Ghost(44, 860-23, 23, 23, Color.cyan);
 	static Ghost ghost4 = new Ghost(1560-23, 860-23, 23, 23, Color.orange);
+	static Ghost ghost5 = new Ghost(44, 44, 23, 23, Color.red);
+	static	Ghost ghost6 = new Ghost(1560-23, 44, 23, 23, Color.pink);
+	static Ghost ghost7 = new Ghost(44, 860-23, 23, 23, Color.cyan);
+	static Ghost ghost8 = new Ghost(1560-23, 860-23, 23, 23, Color.orange);
 	
 
 	objManager() {
@@ -72,56 +76,97 @@ wallE.add(new Wall(720, 490, 120, 40));
 //		iSec.add(new InterSec(205, 165, 1, 1));
 //		iSec.add(new InterSec(205, 95, 1, 1));
 //		iSec.add(new InterSec(95, 95, 1, 1));
+		makePointz();
+//		point.add(new Point(645, 345, 1, 1));
+//		point.add(new Point(735, 345, 1, 1));
+//		point.add(new Point(645, 455, 1, 1));
+//		point.add(new Point(735, 225, 1, 1));
+//		point.add(new Point(415, 225, 1, 1));
+//		point.add(new Point(415, 165, 1, 1));
+//		point.add(new Point(205, 165, 1, 1));
+//		point.add(new Point(205, 95, 1, 1));
+//		point.add(new Point(95, 95, 1, 1));
+//		point.add(new Point(725, 95, 1, 1));
+//		point.add(new Point(305, 245, 1, 1));
+//		point.add(new Point(95, 245, 1, 1));
+//		point.add(new Point(95, 355, 1, 1));
+//		point.add(new Point(305, 365, 1, 1));
+//		point.add(new Point(465, 365, 1, 1));
+//		point.add(new Point(485, 455, 1, 1));
+//		point.add(new Point(305, 455, 1, 1));
+//		point.add(new Point(475, 95, 1, 1));
 		
-		point.add(new Point(645, 345, 1, 1));
-		point.add(new Point(735, 345, 1, 1));
-		point.add(new Point(645, 455, 1, 1));
-		point.add(new Point(735, 225, 1, 1));
-		point.add(new Point(415, 225, 1, 1));
-		point.add(new Point(415, 165, 1, 1));
-		point.add(new Point(205, 165, 1, 1));
-		point.add(new Point(205, 95, 1, 1));
-		point.add(new Point(95, 95, 1, 1));
-		point.add(new Point(725, 95, 1, 1));
-		point.add(new Point(305, 245, 1, 1));
-		point.add(new Point(95, 245, 1, 1));
-		point.add(new Point(95, 355, 1, 1));
-		point.add(new Point(305, 365, 1, 1));
-		point.add(new Point(465, 365, 1, 1));
-		point.add(new Point(485, 455, 1, 1));
-		point.add(new Point(305, 455, 1, 1));
-		point.add(new Point(475, 95, 1, 1));
 		
 		
-		int ICanSee = iSec.size();
-		int AAJUSTFORTHISIG;
-		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
-			Point Point = point.get(AAJUSTFORTHISIG);
-			point.add(new Point(mainClass.width - Point.x - Point.width, Point.y, Point.width, Point.height));
-		}
-		ICanSee = point.size();
-		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
-			InterSec InterSec = iSec.get(AAJUSTFORTHISIG);
-			iSec.add(new InterSec(mainClass.width - InterSec.x - InterSec.width, InterSec.y, InterSec.width, InterSec.height));
-		}
-		ICanSee = wallE.size();
-		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
-			InterSec InterSec = iSec.get(AAJUSTFORTHISIG);
-			iSec.add(new InterSec(InterSec.x, mainClass.height - InterSec.y - InterSec.height, InterSec.width, InterSec.height));
-		}
+//		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+//			Point Point = iSec.get(AAJUSTFORTHISIG);
+//			point.add(new Point(mainClass.width - Point.x - Point.width, Point.y, Point.width, Point.height));
+		//}
+//		ICanSee = point.size();
+//		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+//			Point Point = point.get(AAJUSTFORTHISIG);
+//			point.add(new Point(mainClass.width - Point.x - Point.width, Point.y, Point.width, Point.height));
+//		}
+//		ICanSee = point.size();
+//		for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+//			Point Point = point.get(AAJUSTFORTHISIG);
+//			point.add(new Point(Point.x, mainClass.height - Point.y - Point.height, Point.width, Point.height));
+//		}
 	}
-
+	static void  makePointz() {
+		int pointSize=5;
+			point.clear();
+			point.add(new Point(645, 345, pointSize, pointSize));
+			point.add(new Point(735, 345, pointSize, pointSize));
+			point.add(new Point(645, 455, pointSize, pointSize));
+			point.add(new Point(735, 225, pointSize, pointSize));
+			point.add(new Point(415, 225, pointSize, pointSize));
+			point.add(new Point(415, 165, pointSize, pointSize));
+			point.add(new Point(205, 165, pointSize, pointSize));
+			point.add(new Point(205, 95, pointSize, pointSize));
+			point.add(new Point(95, 95, pointSize, pointSize));
+			point.add(new Point(725, 95, pointSize, pointSize));
+			point.add(new Point(305, 245, pointSize, pointSize));
+			point.add(new Point(95, 245, pointSize, pointSize));
+			point.add(new Point(95, 355, pointSize, pointSize));
+			point.add(new Point(305, 365, pointSize, pointSize));
+			point.add(new Point(465, 365, pointSize, pointSize));
+			point.add(new Point(485, 455, pointSize, pointSize));
+			point.add(new Point(305, 455, pointSize, pointSize));
+			point.add(new Point(475, 95, pointSize, pointSize));
+			
+			int ICanSee;
+			int AAJUSTFORTHISIG;
+			ICanSee = point.size();
+			for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+				Point Point = point.get(AAJUSTFORTHISIG);
+				point.add(new Point(mainClass.width - Point.x - Point.width, Point.y, Point.width, Point.height));
+			}
+			ICanSee = point.size();
+			for ( AAJUSTFORTHISIG = 0; AAJUSTFORTHISIG < ICanSee; AAJUSTFORTHISIG++) {
+				Point Point = point.get(AAJUSTFORTHISIG);
+				point.add(new Point(Point.x, mainClass.height - Point.y - Point.height, Point.width, Point.height));
+			}
+	}
 	void update() {
 		ghost1.update();
 		ghost2.update();
 		ghost3.update();
 		ghost4.update();
+		ghost5.update();
+		ghost6.update();
+		ghost7.update();
+		ghost8.update();
 		for (int i = 0; i < wallE.size(); i++) {
 			Wall s = wallE.get(i);
 			s.update();
 		}
 		pac.update();
 		objManager.checkDeath(pac);
+		for (int i = 0; i < point.size(); i++) {
+			Point s = point.get(i);
+			s.update();
+		}
 	}
 
 	public void draw(Graphics g) {
@@ -134,18 +179,26 @@ wallE.add(new Wall(720, 490, 120, 40));
 		ghost2.draw(g);
 		ghost3.draw(g);
 		ghost4.draw(g);
+		ghost5.draw(g);
+		ghost6.draw(g);
+		ghost7.draw(g);
+		ghost8.draw(g);
 		for (int i = 0; i < iSec.size(); i++) {
 			InterSec s = iSec.get(i);
 			s.draw(g);
 		}
 		pac.draw(g);
-
+		for (int i = 0; i < point.size(); i++) {
+			Point s = point.get(i);
+			s.draw(g);
+		}
 	}
 
 	
 
-	static void scoreAdd(int score) {
-		score += score;
+	 static void scoreAdd() {
+		score += 1;
+		System.out.println("wardtfcgybuhjnmkl,---------->"+score);
 	}
 
 	int scoreGetter() {
@@ -218,6 +271,20 @@ wallE.add(new Wall(720, 490, 120, 40));
 			if (gw.collisionBox.intersects(ghost4.collisionBox)) {System.out.println("SAD");
 				return false;
 			}
+			if (gw.collisionBox.intersects(ghost5.collisionBox)) {System.out.println("SAD");
+			
+			return false;
+		}
+		if (gw.collisionBox.intersects(ghost6.collisionBox)) {System.out.println("SAD");
+			return false;
+		}
+		if (gw.collisionBox.intersects(ghost7.collisionBox)) {System.out.println("SAD");
+			return false;
+		}
+		
+		if (gw.collisionBox.intersects(ghost8.collisionBox)) {System.out.println("SAD");
+			return false;
+		}
 		
 		return true;
 
@@ -228,12 +295,14 @@ wallE.add(new Wall(720, 490, 120, 40));
 		 ghost2 = new Ghost(1560-23, 44, 23, 23, Color.pink);
 		 ghost3 = new Ghost(44, 860-23, 23, 23, Color.cyan);
 		 ghost4 = new Ghost(1560-23, 860-23, 23, 23, Color.orange);
+		 ghost5 = new Ghost(44, 44, 23, 23, Color.red);
+		 ghost6 = new Ghost(1560-23, 44, 23, 23, Color.pink);
+		 ghost7 = new Ghost(44, 860-23, 23, 23, Color.cyan);
+		 ghost8 = new Ghost(1560-23, 860-23, 23, 23, Color.orange);
 		 pac = new Pacman (735, 575, 10, 10);
-	 
-	
-	
-	
-	
+		 
+		
+		 makePointz();
 	
 	}
 	

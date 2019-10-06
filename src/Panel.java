@@ -54,11 +54,11 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawMenuState(Graphics g) {
-		g.setColor(Color.BLACK);
+		g.setColor(Color.gray);
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
-		g.setColor(Color.BLUE);
-		g.setFont(Fount);
-		g.drawString("PacMan", 670, 200);
+		g.setColor(Color.white);
+		g.setFont(Fount);g.drawString("Not", 670, 200);
+		g.drawString("PacMan", 670, 250);
 		g.setFont(Fount);
 		g.drawString("Press any key to start", 600, 400);
 		g.setFont(Fount);
@@ -68,7 +68,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	void drawGameState(Graphics g) {
-		g.setColor(Color.BLACK);
+		g.setColor(Color.LIGHT_GRAY);
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
 		g.setColor(Color.white);
 		g.setFont(FountS);
@@ -77,9 +77,9 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawEndState(Graphics g) {
-		g.setColor(Color.BLACK);
+		g.setColor(Color.gray);
 		g.fillRect(0, 0, mainClass.width, mainClass.height);
-		g.setColor(Color.BLUE);
+		g.setColor(Color.white);
 		g.setFont(Fount);
 		g.drawString("PacMan", 670, 200);
 		g.setFont(Fount);
@@ -116,11 +116,14 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 
 		if (e.getKeyCode() == 32) {
 			if (currentState == MENU_STATE) {
-				JOptionPane.showMessageDialog(null, "To further explain the rules let's break it down as follows:\n"
-						+ "Pacman, our hero, munches his way around the room, eating all of the Pac-dots.\n"
-						+ "In each corner of the room there is a \"Power Pellet\", which when Pacman eats one, the Ghosts turn blue or yellow. Pacman can get extra points by eating the Ghosts. The first one is worth 200 points and each additional Ghost eaten is worth double the number of points.\n"
-						+ "When the player reaches 10,000 points, he gets an additional life - but that only happens once during the game. \n "
-						+ "http://www.pacxon.net/pacman-rules.php");
+//				JOptionPane.showMessageDialog(null, "To further explain the rules let's break it down as follows:\n"
+//						+ "Pacman, our hero, munches his way around the room, eating all of the Pac-dots.\n"
+//						+ "In each corner of the room there is a \"Power Pellet\", which when Pacman eats one, the Ghosts turn blue or yellow. Pacman can get extra points by eating the Ghosts. The first one is worth 200 points and each additional Ghost eaten is worth double the number of points.\n"
+//						+ "When the player reaches 10,000 points, he gets an additional life - but that only happens once during the game. \n "
+//						+ "http://www.pacxon.net/pacman-rules.php");
+//				
+				JOptionPane.showMessageDialog(null, "You are the yellow dot. your goal is trying to eat all the white dots.\n"
+						+ "after ur done, click enter to end the game. If u got hit buy one of the color block, u lose. ");
 			}
 		} else if (currentState == MENU_STATE) {
 			currentState = GAME_STATE;

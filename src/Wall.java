@@ -12,7 +12,7 @@ public class Wall extends GameObject {
 		// TODO Auto-generated constructor stub
 	}
 	public void draw(Graphics g){
-		g.setColor(Color.blue);
+		g.setColor(Color.gray);
 		g.drawRect(x, y, width, height);
 		 g.fillRect(x, y, width, height);
 	}
