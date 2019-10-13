@@ -25,7 +25,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 
 	Panel() {
 		// WEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGI
-		t = new Timer(1 / 604789650, this);
+		t = new Timer(1000 / 60, this);
 
 	}
 
@@ -83,7 +83,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(Fount);
 		g.drawString("PacMan", 670, 200);
 		g.setFont(Fount);
-		g.drawString("Press any key to menu", 600, 400);
+		g.drawString("Press SPACE to menu", 600, 400);
 		g.setFont(Fount);
 		g.drawString("score : " + charaMan.scoreGetter(), 700, 600);
 	}
@@ -124,13 +124,14 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 //				
 				JOptionPane.showMessageDialog(null, "You are the yellow dot. your goal is trying to eat all the white dots.\n"
 						+ "after ur done, click enter to end the game. If u got hit buy one of the color block, u lose. ");
-			}
+			}if (currentState == END_STATE) {
+			currentState = MENU_STATE;
+		}
 		} else if (currentState == MENU_STATE) {
 			currentState = GAME_STATE;
 		}
-		if (currentState == END_STATE) {
-			currentState = MENU_STATE;
-		}
+		
+		
 		if (e.getKeyCode() == 10) {
 			if (currentState == GAME_STATE) {
 				currentState = END_STATE;

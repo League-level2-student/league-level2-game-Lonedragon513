@@ -28,6 +28,7 @@ public class objManager {
 	static Ghost ghost7 = new Ghost(44, 860-23, 23, 23, Color.cyan);
 	static Ghost ghost8 = new Ghost(1560-23, 860-23, 23, 23, Color.orange);
 	
+	long frameC=0;
 
 	objManager() {
 		wallE.add(new Wall(40, 40, 770, 30));
@@ -148,7 +149,16 @@ wallE.add(new Wall(720, 490, 120, 40));
 				point.add(new Point(Point.x, mainClass.height - Point.y - Point.height, Point.width, Point.height));
 			}
 	}
+	
 	void update() {
+		frameC++;
+		if (frameC%600==0&&Ghost.speed<768) {
+			
+			Ghost.speed=Ghost.speed*2;
+			pac.speed=pac.speed*3/2;
+			System.out.println("THE GHOUSTYDFUGehkdfgkdfssssssssssssssssssssssssssssss         "+Ghost.speed);
+			System.out.println("THE PACCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC                "+pac.speed);
+		}
 		ghost1.update();
 		ghost2.update();
 		ghost3.update();

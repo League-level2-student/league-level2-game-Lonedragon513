@@ -3,10 +3,11 @@ import java.awt.Graphics;
 import java.util.Random;
 
 public class Ghost extends GameObject {
-
+static int speed=6;
 	Ghost(int x, int y, int width, int height, Color col) {
 		super(x, y, width, height);
 		this.col = col;
+		speed=6;
 		// TODO Auto-generated constructor stub
 	}
 //	boolean right=false;
@@ -16,25 +17,26 @@ public class Ghost extends GameObject {
 	
 	Color col;
 	Random ran = new Random();
-	int moveX = ran.nextInt(5)-2;
-	int moveY = ran.nextInt(5)-2;
+	int moveX = ran.nextInt(speed)-speed/2;
+	int moveY = ran.nextInt(speed)-speed/2;
 
 	void update() {
+		
 		super.update();
 		x+=moveX;
 		y+=moveY;
 		
 		if (moveX==0) {
-			moveX = ran.nextInt(5)-2;
+			moveX = ran.nextInt(speed)-speed/2;
 		}
 		if (moveY==0) {
-			 moveY = ran.nextInt(7)-2;
+			 moveY = ran.nextInt(speed)-speed/2;
 		}
 		if (x>1560-width||x<40||y<40|| y>860-height) {
 			y = y-moveY;
 			x=x-moveX;
-			moveX = ran.nextInt(5)-2;
-			 moveY = ran.nextInt(5)-2;
+			moveX = ran.nextInt(speed)-speed/2;
+			 moveY = ran.nextInt(speed)-speed/2;
 		}
 		/**
 		if (x<1570) {

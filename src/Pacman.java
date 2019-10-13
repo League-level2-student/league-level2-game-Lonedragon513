@@ -8,9 +8,10 @@ public class Pacman extends GameObject {
 	boolean left;
 	boolean down;
 	boolean up;
-	long speed =1;
+	double speed =2;
 	Pacman(int x, int y, int width, int height) {
 		super(x, y, width, height);
+		speed=2;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,32 +35,32 @@ public class Pacman extends GameObject {
 		
 		
 		if (right) {
-			newX++;
+			newX+=speed;
 		}
 		if (left) {
-			newX--;
+			newX-=speed;
 		}
 		if (up) {
-			newY--;
+			newY-=speed;
 		}
 		if (down) {
-			newY++;
+			newY+=speed;
 		}
 		
 		
 		if (!objManager.checkCollision(new Pacman(newX,newY,width,height))) {
 			if (right) {
 				
-				x++;
+				x+=speed;
 			}
 			if (left) {
-				x--;
+				x-=speed;
 			}
 			if (up) {
-				y--;
+				y-=speed;
 			}
 			if (down) {
-				y++;
+				y+=speed;
 			}
 
 		}
